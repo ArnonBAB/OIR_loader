@@ -1,0 +1,22 @@
+[project]
+name = "OIR-loader"
+version = "0.0.0"
+description = "Loading .oir files as numpy arrays"
+license = "MIT"
+readme = "README.md"
+authors = [{name = "Arnon A.B."}]
+dependencies = [
+    "numpy==1.26.4",
+    "python-bioformats==4.1.0",
+    "python-javabridge==4.0.4"
+]
+
+[project.urls]
+Repository = "https://github.com/ArnonBAB/OIR-loader"
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["."]
