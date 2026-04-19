@@ -2,7 +2,7 @@ import numpy as np
 import javabridge
 import bioformats
 
-def read_oir(file_path) -> np.ndarray:
+def read_oir(file_path) -> tuple[np.ndarray, bioformats.OMEXML]:
         """
         Method to read an Evident .oir file and return the image data as numpy array and metadata as xml.
 
@@ -14,7 +14,7 @@ def read_oir(file_path) -> np.ndarray:
 
         Returns:
             image (np.ndarray): Acquired image data.
-            metadata: metadata
+            metadata (OMEXML): metadata
         """
     
         if not javabridge.get_env():
