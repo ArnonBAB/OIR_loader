@@ -1,4 +1,4 @@
-# OIR-loader
+# OIR_loader
 Function to load .oir files as numpy arrays. 
 
 * Download the oracle 21 python development kit (Note: Eclipse Temurin 25 does not work as the development kit, must be oracle!!!)
