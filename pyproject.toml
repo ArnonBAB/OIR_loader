@@ -1,5 +1,5 @@
 [project]
-name = "OIR-loader"
+name = "OIR_loader"
 version = "0.0.0"
 description = "Loading .oir files as numpy arrays"
 license = "MIT"
