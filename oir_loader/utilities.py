@@ -81,6 +81,23 @@ def convert_oir_folder(input_folder, force=False):
 
             try:
                 img, metadata = read_oir(file_path)
+                
+                pixels = metadata.image().Pixels
+
+                meta_dict = {
+                    "SizeX": pixels.SizeX,
+                    "SizeY": pixels.SizeY,
+                    "SizeZ": pixels.SizeZ,
+                    "SizeC": pixels.SizeC,
+                    "SizeT": pixels.SizeT,
+                    "PhysicalSizeX": pixels.PhysicalSizeX,
+                    "PhysicalSizeY": pixels.PhysicalSizeY,
+                    "PhysicalSizeZ": pixels.PhysicalSizeZ,
+                    "PhysicalSizeXUnit": pixels.PhysicalSizeXUnit,
+                    "PhysicalSizeYUnit": pixels.PhysicalSizeYUnit,
+                    "PhysicalSizeZUnit": pixels.PhysicalSizeZUnit,
+                }
+
             except Exception as e:
                 print(f"Error reading {filename}: {e}")
                 continue
@@ -93,7 +110,7 @@ def convert_oir_folder(input_folder, force=False):
                 print(f"Skipping existing file: {numpy_file_name}")
                 continue
 
-            np.savez_compressed(numpy_file_name, image=img, metadata=metadata)
+            np.savez_compressed(numpy_file_name, image=img, metadata=meta_dict)
             print(f"Saved: {numpy_file_name}")
 
     print("Conversion complete!")
