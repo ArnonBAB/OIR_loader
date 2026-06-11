@@ -6,5 +6,9 @@ Function to load .oir files as numpy arrays. Numpy 1 is used, so probably best t
 * Python 3.13 does not work, 3.11 does work!!!\
 \
 See example file for example usage\
+
+Alternative installation method (with conda wheels are already prebuild, with you have to install pip yourself):\
+use conda to install oir_loader\
+additionally install openjdk version 21 (conda install openjdk==21.*)\
 \
 Install using: pip install git+https://github.com/ArnonBAB/OIR_loader
