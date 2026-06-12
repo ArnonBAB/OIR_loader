@@ -2,6 +2,7 @@ import numpy as np
 import javabridge
 import bioformats
 import os
+import xml.etree.ElementTree as ET
 
 
 def read_oir(file_path) -> tuple[np.ndarray, bioformats.OMEXML]:
