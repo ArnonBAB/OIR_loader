@@ -5,10 +5,10 @@ Function to load .oir files as numpy arrays. Numpy 1 is used, so probably best t
 * Download visual studio and install "MSVC v143 - VS 2022 C++ x64/x86 build tools" and "Windows 10 SDK" (Or "Windows 11 SDK" and "Desktop development with C++") (Go to https://visualstudio.microsoft.com/visual-cpp-build-tools/ , and during installation, go to the tab 'individual components' and pick the specified components and go to the workload tab and check "Desktop development with C++")
 * Python 3.13 does not work, 3.11 does work!!!\
 \
-See example file for example usage\
-
-Alternative installation method (with conda wheels are already prebuild, with you have to install pip yourself):\
-use conda to install oir_loader\
-additionally install openjdk version 21 (conda install openjdk==21.*)\
+See example file for example usage
+\
+Alternative installation method (with conda wheels are already prebuild, with pip you have to build the wheels yourself, which makes installation more complex):\
+* use conda to install oir_loader\
+* additionally install openjdk version 21 (conda install openjdk==21.*)\
 \
 Install using: pip install git+https://github.com/ArnonBAB/OIR_loader
