@@ -39,7 +39,7 @@ def read_oir(file_path) -> tuple[np.ndarray, bioformats.OMEXML]:
         size_t = meta_data.image().Pixels.SizeT
 
         # Initialize array in (x, y, z, time, channel) order
-        image_stack = np.zeros((size_x, size_y, size_z, size_t, size_c), dtype=np.uint16)
+        image_stack = np.zeros((size_y, size_x, size_z, size_t, size_c), dtype=np.uint16)
 
         with bioformats.ImageReader(file_path) as reader:
             # Read and fill the array
