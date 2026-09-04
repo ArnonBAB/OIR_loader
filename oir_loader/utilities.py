@@ -39,7 +39,7 @@ def read_oir(file_path) -> tuple[np.ndarray, bioformats.OMEXML]:
         size_t = meta_data.image().Pixels.SizeT
 
         # Initialize array in (x, y, z, time, channel) order
-        image_stack = np.zeros((size_x, size_y, size_z, size_t, size_c), dtype=np.uint16)
+        image_stack = np.zeros((size_y, size_x, size_z, size_t, size_c), dtype=np.uint16)
 
         with bioformats.ImageReader(file_path) as reader:
             # Read and fill the array
@@ -81,6 +81,23 @@ def convert_oir_folder(input_folder, force=False):
 
             try:
                 img, metadata = read_oir(file_path)
+                
+                pixels = metadata.image().Pixels
+
+                meta_dict = {
+                    "SizeX": pixels.SizeX,
+                    "SizeY": pixels.SizeY,
+                    "SizeZ": pixels.SizeZ,
+                    "SizeC": pixels.SizeC,
+                    "SizeT": pixels.SizeT,
+                    "PhysicalSizeX": pixels.PhysicalSizeX,
+                    "PhysicalSizeY": pixels.PhysicalSizeY,
+                    "PhysicalSizeZ": pixels.PhysicalSizeZ,
+                    "PhysicalSizeXUnit": pixels.PhysicalSizeXUnit,
+                    "PhysicalSizeYUnit": pixels.PhysicalSizeYUnit,
+                    "PhysicalSizeZUnit": pixels.PhysicalSizeZUnit,
+                }
+
             except Exception as e:
                 print(f"Error reading {filename}: {e}")
                 continue
@@ -93,7 +110,7 @@ def convert_oir_folder(input_folder, force=False):
                 print(f"Skipping existing file: {numpy_file_name}")
                 continue
 
-            np.savez_compressed(numpy_file_name, image=img, metadata=metadata)
+            np.savez_compressed(numpy_file_name, image=img, metadata=meta_dict)
             print(f"Saved: {numpy_file_name}")
 
     print("Conversion complete!")
